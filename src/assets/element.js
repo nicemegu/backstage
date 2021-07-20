@@ -78,9 +78,11 @@ import {
   Message,
   Notification,
   Empty,
-  Avatar
+  Avatar,
+  Drawer
 } from 'element-ui';
 
+Vue.use(Drawer);
 Vue.use(Avatar);
 Vue.use(Empty);
 Vue.use(Pagination);

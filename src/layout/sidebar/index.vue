@@ -2,9 +2,23 @@
   <div>
     <el-row class="tac">
       <el-col>
-        <h3 class="menu-title">自定义颜色</h3>
-        <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" :router="true">
-          <sidebar-item :item="item" v-for="(item,i) in routerList" :key="i"></sidebar-item>
+        <h3 class="menu-title"><span v-if="!isCollapse">自定义颜色</span></h3>
+        <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" :router="true">
+          <fragment v-for="(item,i) in routerList" :key="i">
+            <el-menu-item :index="item.routerPath" v-if="item.children.length==1">
+              <i class="el-icon-location"></i>
+              <span slot="title">{{item.name}}</span>
+            </el-menu-item>
+            <el-submenu v-else :index="item.name">
+              <template slot="title">
+                <i class="el-icon-location"></i>
+                <span>{{item.name}}</span>
+              </template>
+              <el-menu-item-group>
+                <el-menu-item :index="row.routerPath" v-for="(row,i) in item.children" :key="i">{{row.name}}</el-menu-item>
+              </el-menu-item-group>
+            </el-submenu>
+          </fragment>
         </el-menu>
       </el-col>
     </el-row>
@@ -13,8 +27,10 @@
 
 <script>
 import { routerList } from '@/router/index'
-import SidebarItem from './SideBarItem.vue'
 export default {
+  props: {
+    isCollapse: Boolean
+  },
   data () {
     return {
       routerList: []
@@ -28,7 +44,6 @@ export default {
 
   },
   components: {
-    SidebarItem
   },
   methods: {
     handleOpen (key, keyPath) {
@@ -65,9 +80,9 @@ export default {
 }
 
 </script>
-<style scoped>
+<style >
 .menu-title {
-  width: 219px;
+  width: 100%;
   height: 60px;
   margin: 0;
   background-color: #545c64;
@@ -86,5 +101,12 @@ export default {
 .el-col > ul {
   height: 100%;
   flex: 1;
+}
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+  width: 200px;
+  min-height: 400px;
+}
+.el-menu {
+  border-right-width: 0;
 }
 </style>

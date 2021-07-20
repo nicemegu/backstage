@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="page-main">
     <keep-alive>
       <transition name="fade-page" mode="out-in">
-        <router-view />
+        <router-view ref="authTree" />
       </transition>
     </keep-alive>
   </div>
@@ -10,7 +10,10 @@
 
 <script>
 export default {
-  name: 'PageMain'
+  name: 'PageMain',
+  mounted(){
+    console.log( this.$refs.authTree);
+  }
 }
 </script>
 <style scoped>
