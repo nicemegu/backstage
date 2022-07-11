@@ -11,3 +11,10 @@ export  function getWeiboHotSearchDetails(params) {
     method: 'get'
   })
 }
+export  function testCreate(params) {
+  return $axios({
+    url:'/api/cat/create',
+    method: 'post',
+    data:params
+  })
+}

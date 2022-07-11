@@ -21,25 +21,31 @@ module.exports = {
     //       '^/search': '/'
     //     }
     //   },
-      '/tiktok': {
-        target: 'https://www.douyin.com',// 后端接口
+      // '/tiktok': {
+      //   target: 'https://www.douyin.com',// 后端接口
+      //   changeOrigin: true, // 是否跨域
+      //   pathRewrite: {
+      //     '^/tiktok': '/'
+      //   }
+      // },
+      // '/webioDetails': {
+      //   target: 'https://s.weibo.com',// 后端接口
+      //   changeOrigin: true, // 是否跨域
+      //   pathRewrite: {
+      //     '^/webioDetails': '/'
+      //   }
+      // },
+      //  '/webio': {
+      //   target: 'http://api.rosysun.cn',// 后端接口
+      //   changeOrigin: true, // 是否跨域
+      //   pathRewrite: {
+      //     '^/webio': '/'
+      //   }
+       '/api': {
+        target: 'http://zxy.luoyu520.top',// 后端接口
         changeOrigin: true, // 是否跨域
         pathRewrite: {
-          '^/tiktok': '/'
-        }
-      },
-      '/webioDetails': {
-        target: 'https://s.weibo.com',// 后端接口
-        changeOrigin: true, // 是否跨域
-        pathRewrite: {
-          '^/webioDetails': '/'
-        }
-      },
-       '/webio': {
-        target: 'http://api.rosysun.cn',// 后端接口
-        changeOrigin: true, // 是否跨域
-        pathRewrite: {
-          '^/webio': '/'
+          '^/api': '/'
         }
       },
      

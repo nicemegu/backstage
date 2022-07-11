@@ -50,7 +50,7 @@
       <el-button @click="test2">默认按钮</el-button>
     </el-row>
     <el-row>
-      <el-button @click="test2">默认按钮</el-button>
+      <el-button @click="testCreate">testCreate</el-button>
     </el-row>
     <el-row>
       <el-button @click="test2">默认按钮</el-button>
@@ -63,7 +63,7 @@
 // 引入 echarts 核心模块，核心模块提供了 echarts 使用必须要的接口。
 import * as echarts from 'echarts';
 import { getListAPI } from '../../api/good'
-import { getWeiboHotSearch, getWeiboHotSearchDetails } from '@/api/index'
+import { getWeiboHotSearch, getWeiboHotSearchDetails, testCreate } from '@/api/index'
 export default {
   data () {
     return {
@@ -79,6 +79,7 @@ export default {
   computed: {},
 
   mounted () {
+
     this.echartsInit()
     this.test()
     // this.test2()
@@ -87,7 +88,7 @@ export default {
       { num: 1, batchList: [{ rate: '2010-01-02', count: 4 }, { rate: '2010-01-03', count: 6 }] }
     ]
 
-  
+
 
 
     let obj = {}
@@ -98,7 +99,7 @@ export default {
         } else {
           obj[item.rate] = item.count
         }
-        
+
       })
     })
     const newarr = []
@@ -120,6 +121,15 @@ export default {
   },
 
   methods: {
+    testCreate () {
+      const data ={
+        // name:'a',
+        age:18
+      }
+      testCreate(data).then((res) => {
+        console.log(res);
+      })
+    },
     getData () {
       return 2
     },
